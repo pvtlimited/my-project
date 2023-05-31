@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>JustMe Center</title>
+  <link rel="stylesheet" type="text/css"  href="../static/style.css" />
+
+
+<style>
+table
+{ margin: 10px 0 30px 0;}
+
+table tr th, table tr td
+{ background: #3B3B3B;
+  color: #FFF;
+  padding: 7px 4px;
+  text-align: left;}
+
+table tr td
+{ background: #E5E5DB;
+  color: #47433F;
+  border-top: 1px solid #FFF;}
+
+  nav {
+    display: block;
+    text-align: center;
+  }
+  nav ul {
+    margin: 0;
+    padding:0;
+    list-style: none;
+  }
+  .nav a {
+    display:block;
+    background: black;
+    color:#fff;
+    text-decoration: none;
+    padding: .8em 1.8em;
+    text-transform: uppercase;
+    font-size: 90%;letter-spacing: 2px;
+    text-shadow: 0 -1px 0 #000;
+    position: relative;
+  }
+  .nav{
+    vertical-align: top;
+    display: inline-block;
+    box-shadow: 1px -1px -1px 1px #000, -1px 1px -1px 1px black, 0 0 6px 3px black;
+    border-radius:6px;
+  }
+  .nav li{position: relative;}
+  .nav > li {
+    float:left;
+    border-bottom: 4px #aaa solid;
+    margin-right: 1px;
+  }
+  .nav > li > a {
+    margin-bottom:1px;
+    box-shadow:inset 0 2em .33em -.5em #555;
+  }
+  .nav > li:hover , .nav > li:hover >a{  border-bottom-color:#E4EC04;}
+  .nav li:hover > a { color:#E4EC04; }
+  .nav > li:first-child  { border-radius: 4px 0 0 4px;}
+  .nav > li:first-child>a{border-radius: 4px 0 0 0;}
+  .nav > li:last-child  {
+    border-radius: 0 0 4px 0;
+    margin-right: 0;
+  }
+  .nav > li:last-child >a{border-radius: 0 4px 0 0; }
+  .nav li li a { margin-top:1px}
+
+
+
+    .nav li a:first-child:nth-last-child(2):before {
+     content:"";
+     position: absolute;
+     height:0;
+     width: 0;
+     border: 5px solid transparent;
+     top: 50% ;
+     right:5px;
+   }
+
+
+
+
+
+   /* submenu positioning*/
+.nav ul {
+  position: absolute;
+  white-space: nowrap;
+  border-bottom: 5px solid  #E4EC04;
+  z-index: 1;
+  left: -99999em;
+}
+.nav > li:hover > ul {
+  left: auto;
+  padding-top: 5px  ;
+  min-width: 100%;
+}
+.nav > li li ul {  border-left:1px solid #fff;}
+
+
+.nav > li li:hover > ul {
+ /* margin-left: 1px */
+  left: 100%;
+  top: -1px;
+}
+/* arrow hover styling */
+.nav > li > a:first-child:nth-last-child(2):before {
+  border-top-color: #aaa;
+}
+.nav > li:hover > a:first-child:nth-last-child(2):before {
+  border: 5px solid transparent;
+  border-bottom-color: #E4EC04;
+  margin-top:-5px
+}
+.nav li li > a:first-child:nth-last-child(2):before {
+  border-left-color: #aaa;
+  margin-top: -5px
+}
+.nav li li:hover > a:first-child:nth-last-child(2):before {
+  border: 5px solid transparent;
+  border-right-color: #E4EC04;
+  right: 10px;
+}
+.form_settings select
+{ padding: 5px;
+  width: 311px;
+  font: 100% arial;
+  border: 1px solid #E5E5DB;
+  background: #FFF;
+  color: #47433F;}
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><img src="../static/alnafi.png" width="250" height="70"></h1>
+
+        </div>
+      </div>
+      <nav>
+        <ul class="nav">
+          <li><a href="{{ url_for('get_home')}}"><b>Home</b></a></li>
+        <li><a href="{{ url_for('trainer')}}">JustMe Tsheet</a></li>
+          <li><a href="#">Reports</a>
+            <ul>
+              <li><a href="{{ url_for('jira_details')}}">Jira Report</a> </li>
+              <li><a href="{{ url_for('trainer_details')}}">JustMe </a></li>
+            </ul>
+          </li>
+         
+          <li><a href="">Ticket Creation</a>
+            <ul>
+              <li><a href="{{ url_for('jira')}}">First</a></li>
+              <li><a href="{{ url_for('jira_1')}}">Second</a></li>
+              <li><a href="{{ url_for('jira_2')}}">Multiple</a></li>
+            </ul>
+          </li>
+        <li><a href="#">Comments</a>
+            <ul>
+              <li><a href="{{ url_for('comments')}}">Server 1 Comments</a></li>
+              <li><a href="{{ url_for('comments_1')}}">Server 2 Comments</a></li>
+            </ul>
+          </li>
+          
+      <li><a href="#">Login Activity</a>
+            <ul>
+              <li><a href="{{url_for('get_home')}}">Welcome</a></li>
+              <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+
+	<div style="position: relative; right:-155px;" class="form_settings">
+
+	<h1 style = "font-family:georgia,garamond,serif;font-size:25px;"><b>Jira Ticket Creation</b></h1>
+    <form id="reused_form" method="post" action="{{ url_for('jira_create_2') }}" >
+
+
+                                        
+
+                                        <p><span>Main Names</span>
+                                          <select  name="project_name" required>
+                                            <option value="wallah"> Wallah</option>
+                                            <option value="note">Note</option>
+                                            <option value="All">All</option>
+                                          </select></p>
+                                  
+                                        <p><span>Project Name</span>
+                                          <select  name="project" required>
+                                            <option value="FP">First Project</option> 
+                                            <option value="JUS">justme (JUS)-wallah</option>
+                                            <!-- <option value="FPO">For Python Only (FPO)-wallah</option>
+                                            <option value="SKP">Sample Kanban Project (SKP)-wallah</option> -->
+                                          </select></p>
+                                        <p><span>Issue Type</span>
+                                          <select  name="issuetype" required>
+                                            <option value="Task">Task</option>
+                                            <option value="Epic">Epic</option>
+                                            <option value="Story">Story</option>
+                                            <option value="Bug">Bug</option>
+                                          </select></p>
+                                        <p><span>Reporter Name</span> 
+                                          <select  name="reporter"  required>
+                                            <!-- <option value='712020:0dc06b78-3781-4375-bf07-25bf9aa26e0e'>Kubernetes Master</option>
+                                            <option value='63f2fc711223974bc049f403'>JustMe-wallah</option> -->
+                                            <option value='63eda871eaf0b28dfd1bc857'>Muhammad Farooq Azam</option>
+                                            <option value="EMPTY">Unassigned</option>
+                                                </select></p>
+                                        <p><span>Assignee Name</span>
+                                          <select  name="assignee"  required>
+                                            <!-- <option value='63f2fc711223974bc049f403'>JustMe</option> -->
+                                            <option value='63eda871eaf0b28dfd1bc857'>Muhammad Farooq Azam</option>
+                                            <!-- <option value='712020:0dc06b78-3781-4375-bf07-25bf9aa26e0e'>Kubernetes Master</option></select></p> -->
+                                            <option value="EMPTY">Unassigned</option></select></p>
+                                        <p><span>Summary</span>
+                                        <input name="summary" class="form-control"  placeholder="Enter your Summary Here" required></input>
+
+                                        <p><span>Description</span>
+                                        <textarea name="desc" class="form-control"  placeholder="Enter your Last Name Here" required></textarea>
+                                            <p><span>Priority</span>
+                                      <select  name="priority" required>
+                                        <option value="Highest">Highest</option>
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Lowest">Lowest</option>
+                                          </select></p>
+                                  <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="submit" value="Create Jira Ticket"></p>
+                                  
+                                </form>
+								</div><br><br><br><br><br><br>
+
+	  </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      <p><a href="index.html">Home</a> | <a href="{{ url_for('trainer') }}">JustMe Tsheet</a> | <a href="{{ url_for('trainer_details') }}">JustMe Report</a> | <a href="">Reminder</a> | <a href="">Contact Us</a></p>
+      <p>Designed By : Just Me </p>
+    </div>
+  </div>
+</body>
+</html>

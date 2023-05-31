@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Code Input</title>
+    <script>
+        function processHTMLCode() {
+            var htmlCode = document.getElementById("htmlCodeInput").value;
+            document.getElementById("result").innerHTML = htmlCode;
+        }
+    </script>
+</head>
+<body>
+    <h2>HTML Code Input</h2>
+    <textarea id="htmlCodeInput" rows="10" cols="50"></textarea> 
+    <br>
+    <button onclick="processHTMLCode()">Process Code</button>
+    <br>
+    <h2>Result:</h2>
+    <div id="result"></div>
+</body>
+</html>
