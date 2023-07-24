@@ -43,5 +43,4 @@ jobs:
 
     - name: Run Flask application
       run: |
-        cd app
         python3 uat_app.py
