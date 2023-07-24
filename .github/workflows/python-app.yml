@@ -1,0 +1,55 @@
+name: Python Flask CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    env:
+      MYSQL_ROOT_PASSWORD: "passwordis@2018"  # Replace with your desired root password
+      MYSQL_DATABASE: "summer_gala"      # Replace with your desired database name
+      MYSQL_USER: "root"          # Replace with your desired database user
+      MYSQL_PASSWORD: "passwordis@2018"  # Replace with your desired database user password
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'  # Replace 'x' with the desired Python version (e.g., 3.7, 3.8, 3.9)
+
+    - name: Install MySQL server
+      run: |
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
+        sudo service mysql start
+        echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${MYSQL_ROOT_PASSWORD}';" | sudo mysql
+        echo "FLUSH PRIVILEGES;" | sudo mysql
+        sudo service mysql restart
+      continue-on-error: true
+
+    - name: Install MySQL client for Python
+      run: sudo apt-get install -y python3-dev libmysqlclient-dev
+
+    - name: Install Python dependencies
+      run: pip3 install -r requirements.txt
+
+    - name: Set up MySQL environment variables
+      run: echo "export FLASK_MYSQL_HOST='localhost'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_PORT='3306'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_USER='${MYSQL_USER}'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_PASSWORD='${MYSQL_PASSWORD}'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_DB='${MYSQL_DATABASE}'" >> $GITHUB_ENV
+
+    - name: Run Flask application
+      run: |
+        python3 uat_app.py
