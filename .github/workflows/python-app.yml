@@ -13,6 +13,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      MYSQL_ROOT_PASSWORD: "passwordis@2018"  # Replace with your desired root password
+      MYSQL_DATABASE: "summer_gala"      # Replace with your desired database name
+      MYSQL_USER: "root"          # Replace with your desired database user
+      MYSQL_PASSWORD: "passwordis@2018"  # Replace with your desired database user password
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -25,13 +31,9 @@ jobs:
     - name: Install MySQL server
       run: |
         sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
-        echo "[mysqld]" | sudo tee -a /etc/mysql/mysql.conf.d/mysqld.cnf
-        echo "skip-grant-tables" | sudo tee -a /etc/mysql/mysql.conf.d/mysqld.cnf
-        sudo service mysql restart
-        sleep 5
-        echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'passwordis@2018';" | sudo mysql
+        sudo service mysql start
+        echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${MYSQL_ROOT_PASSWORD}';" | sudo mysql
         echo "FLUSH PRIVILEGES;" | sudo mysql
-        sudo sed -i '/skip-grant-tables/d' /etc/mysql/mysql.conf.d/mysqld.cnf
         sudo service mysql restart
       continue-on-error: true
 
@@ -40,6 +42,13 @@ jobs:
 
     - name: Install Python dependencies
       run: pip3 install -r requirements.txt
+
+    - name: Set up MySQL environment variables
+      run: echo "export FLASK_MYSQL_HOST='localhost'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_PORT='3306'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_USER='${MYSQL_USER}'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_PASSWORD='${MYSQL_PASSWORD}'" >> $GITHUB_ENV
+           echo "export FLASK_MYSQL_DB='${MYSQL_DATABASE}'" >> $GITHUB_ENV
 
     - name: Run Flask application
       run: |
