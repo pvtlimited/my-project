@@ -177,47 +177,35 @@ table tr td
         </ul>
       </nav>
 
+
     </div>
     <div id="content_header"></div>
     <div id="site_content">
 
 	<div style="position: relative; right:-155px;" class="form_settings">
 
-	<h1 style = "font-family:georgia,garamond,serif;font-size:25px;"><b>Jira Ticket Creation</b></h1>
-    <form id="reused_form" method="post" action="{{ url_for('jira_create') }}" >
-
-
-                                        <p><span>Project Name</span>
-                                          <select  name="project" required>
-                                            <option value="JUS">justme (JUS)</option>
-                                            <option value="FP">First Project</option>
-                                            
+	<h1 style = "font-family:georgia,garamond,serif;font-size:25px;"><b>Sub-task Creation</b></h1>
+    <form id="reused_form" method="post" action="{{ url_for('subtask') }}" >     
+                                       <p><span>Server Name</span>
+                                          <select  name="project_name" required>
+                                            <option value='"wallah"'>Wallah</option>
+                                            <option value='"note"'>Note</option>
                                           </select></p>
+                                          <p><span>Ticket Number</span>
+                                            <input name="ticket" class="form-control"  placeholder="Enter your Ticket Number Here" required></input>
                                         <p><span>Issue Type</span>
                                           <select  name="issuetype" required>
-                                            <option value="Task">Task</option>
-                                            <option value="Epic">Epic</option>
-                                            <option value="Story">Story</option>
-                                            <option value="Issue">Issue</option>
-                                            <option value="Bug">Bug</option>
+                                            <option value="Task"  >SubTask</option>
                                           </select></p>
-                                        <p><span>Reporter Name</span>
-                                          <select  name="reporter"  required>
-                                            <option value='63f2fc711223974bc049f403'>JustMe</option>
-                                            <option value='63eda871eaf0b28dfd1bc857'>Muhammad Farooq Azam</option>
-                                            <option value="EMPTY">Unassigned</option>
-                                                </select></p>
                                         <p><span>Assignee Name</span>
                                           <select  name="assignee"  required>
-                                            <option value='63f2fc711223974bc049f403'>JustMe</option>
                                             <option value='63eda871eaf0b28dfd1bc857'>Muhammad Farooq Azam</option>
-                                            <option value="EMPTY">Unassigned</option>
-                                                </select></p>
+                                            <option value='712020:0dc06b78-3781-4375-bf07-25bf9aa26e0e'>Kubernetes Master</option></select></p>
                                         <p><span>Summary</span>
                                         <input name="summary" class="form-control"  placeholder="Enter your Summary Here" required></input>
 
                                         <p><span>Description</span>
-                                        <textarea name="desc" class="form-control"  placeholder="Enter your Last Name Here" required></textarea>
+                                        <textarea name="desc" class="form-control"  placeholder="Enter your Description Here" required></textarea>
                                             <p><span>Priority</span>
                                       <select  name="priority" required>
                                         <option value="Highest">Highest</option>
@@ -226,9 +214,8 @@ table tr td
                                         <option value="Low">Low</option>
                                         <option value="Lowest">Lowest</option>
                                           </select></p>
-                                  <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="submit" value="Create Jira Ticket"></p>
+                                  <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="submit" value="Create SubTask"></p>
 
-                                 
                                 </form>
 								</div><br><br><br><br><br><br>
 

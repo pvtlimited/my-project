@@ -145,8 +145,6 @@ def trainer_create():
             #cursor.close()
             return render_template('trainer_form.html',username=session['username'])
         return redirect(url_for('login_form'))
-
-
 #HURRY UP
 @app.route("/trainer_details",methods=['POST','GET'])		#http://127.0.0.1:5000/contact
 def trainer_details():
@@ -239,8 +237,8 @@ def jira_create_1():
             priority_data = request.form['priority']
             assignee_id = request.form['assignee']
             url = 'https://note.atlassian.net'
-            user = 'farooqthescout2018@gmail.com'
-            api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
+            user = 'forme4005@gmail.com'
+            api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
             jira = JIRA(url, basic_auth=(user, api_token))
             issue = jira.create_issue(project=project_data, summary=summary_data, issuetype=issuetype_data,
                                       description=desc_data, reporter={'id': reporter_data},
@@ -288,8 +286,8 @@ def jira_create_2():
                 print(issue)
             elif project_name == "note":
                 url = 'https://note.atlassian.net'
-                user = 'farooqthescout2018@gmail.com'
-                api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
+                user = 'forme4005@gmail.com'
+                api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
                 jira = JIRA(url, basic_auth=(user, api_token))
                 issue = jira.create_issue(project=project_data, summary=summary_data, issuetype=issuetype_data,
                                           description=desc_data, reporter={'id': reporter_data},
@@ -307,16 +305,16 @@ def jira_create_2():
                                               description=desc_data, reporter={'id': reporter_data},
                                               priority={'name': priority_data},assignee={'id': assignee_id})
                 url = 'https://note.atlassian.net'
-                user = 'farooqthescout2018@gmail.com'
+                user = 'forme4005@gmail.com'
 
-                api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
+                api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
                 jira = JIRA(url, basic_auth=(user, api_token))
                 issue = jira.create_issue(project=project_data, summary=summary_data, issuetype=issuetype_data,
                                           description=desc_data, reporter={'id': reporter_data},
                                           priority={'name': priority_data},assignee={'id': assignee_id})
 
             """url = 'https://note.atlassian.net'
-            user = 'farooqthescout2018@gmail.com'
+            user = 'forme4005@gmail.com'
             api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
             jira = JIRA(url, basic_auth=(user, api_token))
             issue = jira.create_issue(project=project_data, summary=summary_data, issuetype=issuetype_data,
@@ -330,79 +328,15 @@ def jira_create_2():
 @app.route("/jira_details",methods=['POST','GET'])		#http://127.0.0.1:5000/contact
 def jira_details():
     if 'loggedin' in session:
-        api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
+        """api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
         url = 'https://wallah.atlassian.net/'
         user = 'forme4005@gmail.com'
         jira = JIRA(url, basic_auth=(user, api_token))
-        issues = jira.search_issues('')
+        issues = jira.search_issues('')"""
         cat = []
         # create the subtask
         if request.method == "POST":
             which_form = request.form['which']
-            """desc_data = request.form['desc']
-            ticket_data = request.form['tick_number']
-            summary_subtask = request.form['summary']
-            assignee_id = request.form['assignee']
-            account=request.form['account']
-            which_form=request.form['which']
-            ticket_data = ticket_data.replace(" ", "")
-            parent_issue = jira.issue(ticket_data)
-            project_key = parent_issue.fields.project.key
-            parent_issue_key = parent_issue.key
-
-            print(parent_issue_key)
-            print(project_key)
-            if account == "wallah":
-                api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
-                url = 'https://wallah.atlassian.net/'
-                user = 'forme4005@gmail.com'
-                jira = JIRA(url, basic_auth=(user, api_token))
-                subtask = jira.create_issue(
-                    project=project_key,
-                    summary=summary_subtask,
-                    description=desc_data,
-                    issuetype={'name': 'Sub-task'},
-                    parent={'key': ticket_data}
-                )
-                print(subtask)
-            elif account == "note":
-                url = 'https://note.atlassian.net'
-                user = 'farooqthescout2018@gmail.com'
-                api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
-                jira = JIRA(url, basic_auth=(user, api_token))
-                subtask = jira.create_issue(
-                    project=project_key,
-                    summary=summary_subtask,
-                    description=desc_data,
-                    issuetype={'name': 'Sub-task'},
-                    parent={'key': ticket_data}
-                )
-                print(subtask)
-            elif account == "all":
-                api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
-                url = 'https://wallah.atlassian.net/'
-                user = 'forme4005@gmail.com'
-                jira = JIRA(url, basic_auth=(user, api_token))
-                subtask = jira.create_issue(
-                    project=project_key,
-                    summary=summary_subtask,
-                    description=desc_data,
-                    issuetype={'name': 'Sub-task'},
-                    parent={'key': ticket_data}
-                )
-                url = 'https://note.atlassian.net'
-                user = 'farooqthescout2018@gmail.com'
-                api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
-                jira = JIRA(url, basic_auth=(user, api_token))
-                subtask = jira.create_issue(
-                    project=project_key,
-                    summary=summary_subtask,
-                    description=desc_data,
-                    issuetype={'name': 'Sub-task'},
-                    parent={'key': ticket_data}
-                )
-                print(subtask)"""
-
             if which_form == "wallah":
                 api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
                 url = 'https://wallah.atlassian.net/'
@@ -426,10 +360,74 @@ def jira_details():
 
                     cat.append(transformed_data)
                     print(transformed_data)
+
+                    desc_data = request.form['desc']
+                    ticket_data = request.form['tick_number']
+                    summary_subtask = request.form['summary']
+                    account = request.form['account']
+                    which_form = request.form['which']
+                    parent_issue = jira.issue(ticket_data)
+                    ticket_data = ticket_data.replace(" ", "")
+                    project_key = parent_issue.fields.project.key
+                    parent_issue_key = parent_issue.key
+
+                    print(parent_issue_key)
+                    print(project_key)
+                    if account == "wallah":
+                        api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
+                        url = 'https://wallah.atlassian.net/'
+                        user = 'forme4005@gmail.com'
+                        jira = JIRA(url, basic_auth=(user, api_token))
+                        subtask = jira.create_issue(
+                            project=project_key,
+                            summary=summary_subtask,
+                            description=desc_data,
+                            issuetype={'name': 'Sub-task'},
+                            parent={'key': ticket_data}
+                        )
+                        print(subtask)
+                    elif account == "note":
+                        url = 'https://note.atlassian.net'
+                        user = 'forme4005@gmail.com'
+                        api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
+                        jira = JIRA(url, basic_auth=(user, api_token))
+                        subtask = jira.create_issue(
+                            project=project_key,
+                            summary=summary_subtask,
+                            description=desc_data,
+                            issuetype={'name': 'Sub-task'},
+                            parent={'key': ticket_data}
+                        )
+                        print(subtask)
+                    elif account == "all":
+                        api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
+                        url = 'https://wallah.atlassian.net/'
+                        user = 'forme4005@gmail.com'
+                        jira = JIRA(url, basic_auth=(user, api_token))
+                        subtask = jira.create_issue(
+                            project=project_key,
+                            summary=summary_subtask,
+                            description=desc_data,
+                            issuetype={'name': 'Sub-task'},
+                            parent={'key': ticket_data}
+                        )
+                        url = 'https://note.atlassian.net'
+                        user = 'forme4005@gmail.com'
+                        api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
+                        jira = JIRA(url, basic_auth=(user, api_token))
+                        subtask = jira.create_issue(
+                            project=project_key,
+                            summary=summary_subtask,
+                            description=desc_data,
+                            issuetype={'name': 'Sub-task'},
+                            parent={'key': ticket_data}
+                        )
+                        print(subtask)
+
             elif which_form == "note":
                 url = 'https://note.atlassian.net'
-                user = 'farooqthescout2018@gmail.com'
-                api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
+                user = 'forme4005@gmail.com'
+                api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
                 jira = JIRA(url, basic_auth=(user, api_token))
                 issues = jira.search_issues('')
                 for issue in issues:
@@ -451,6 +449,7 @@ def jira_details():
 
                     cat.append(transformed_data)
                     print(transformed_data)
+
             elif which_form == "All":
                 api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
                 url = 'https://wallah.atlassian.net/'
@@ -477,8 +476,8 @@ def jira_details():
                     cat.append(transformed_data)
                     print(transformed_data)
                 url = 'https://note.atlassian.net'
-                user = 'farooqthescout2018@gmail.com'
-                api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
+                user = 'forme4005@gmail.com'
+                api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
                 jira = JIRA(url, basic_auth=(user, api_token))
                 issues = jira.search_issues('')
                 for issue in issues:
@@ -497,11 +496,7 @@ def jira_details():
                     # Prepare the transformed data
                     transformed_data = (
                         issue_key, summary, issue_type_name, formatted_date, priority, assignee, reporter_name)
-
                     cat.append(transformed_data)
-                    print(transformed_data)
-
-
 
         return render_template('trainer_report_jira.html', output_data=cat,username=session['username'] )
     return redirect(url_for('login_form'))
@@ -510,44 +505,15 @@ def jira_details():
 def comments():
     if 'loggedin' in session:
         list_for = []
-        if request.method == "POST":
-            project_number=request.form['project_name']
-            api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
-            url = 'https://wallah.atlassian.net/'
-            user = 'forme4005@gmail.com'
-            jira_connection = JIRA(url, basic_auth=(user, api_token))
-
-            jira_issue = jira_connection.issue(project_number)
-            comm = jira_issue.fields.comment.comments
-            issue_comments = jira_issue.fields.comment.comments
-            list_for = []
-            for comment in comm:
-                auther_name = comment.author.displayName
-                comment_body = comment.body
-                created = comment.created
-                date_obj = datetime.strptime(created, "%Y-%m-%dT%H:%M:%S.%f%z")
-                custom_date_format = "%d-%B-%Y"
-                formatted_date = date_obj.strftime(custom_date_format)
-                print(auther_name)
-                print(comment_body)
-                transferred_data = (auther_name, comment_body, formatted_date)
-                print(transferred_data)
-                list_for.append(transferred_data)
-        return render_template('comments.html',output_data=list_for ,username=session['username'])
-    return redirect(url_for('login_form'))
-
-
-@app.route("/comments_1",methods=['POST','GET'])		#http://127.0.0.1:5000/contact
-def comments_1():
-    if 'loggedin' in session:
-        list_for=[]
-        url = 'https://note.atlassian.net'
-        user = 'farooqthescout2018@gmail.com'
-        api_token = 'ATATT3xFfGF00EtiKece8swJev6Nf2c2hEzb3mQP_SaCxoE5qjRSKYKx99g4m_Fg1qz6NxDnheW1jDeYEm7MEhq-5-MHirMqmr2KWNDFk7GXslH9rqEpGUUtmFxTdEiP4Tip_kkX0Bn3Kf44DirrL8mmnA_ISzjGGwxHtiNc6TSsaCt649TyN4o=5715ACBE'
-        jira_connection = JIRA(url, basic_auth=(user, api_token))
         try:
             if request.method == "POST":
-                project_number = request.form['project_name']
+                project_number=request.form['project_name']
+                url = 'https://note.atlassian.net'
+                user = 'forme4005@gmail.com'
+                api_token = 'ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D'
+    
+                jira_connection = JIRA(url, basic_auth=(user, api_token))
+
                 jira_issue = jira_connection.issue(project_number)
                 comm = jira_issue.fields.comment.comments
                 issue_comments = jira_issue.fields.comment.comments
@@ -564,10 +530,46 @@ def comments_1():
                     transferred_data = (auther_name, comment_body, formatted_date)
                     print(transferred_data)
                     list_for.append(transferred_data)
+        except JIRAError as e:
+            error_message = e.text
+            error_message = "JIRAError: ", error_message
+            list_for.append(error_message)
+        return render_template('comments.html',output_data=list_for ,username=session['username'])
+    return redirect(url_for('login_form'))
+
+
+@app.route("/comments_1",methods=['POST','GET'])		#http://127.0.0.1:5000/contact
+def comments_1():
+    if 'loggedin' in session:
+        list_for=[]
+
+        try:
             if request.method == "POST":
-                ticket_number = request.form['comment_add']
-                issue = jira_connection.issue(project_number)
-                new_comment = jira_connection.add_comment(issue, ticket_number)
+                project_number=request.form['project_name']
+                api_token = "ATATT3xFfGF0LSPaxm9LmwRa-XvbGbUP5e6Zny1Z6Qn7PVWQDSVVtnlJDxN-Z1hEXjbZTa03MZ-v6uqcYtHG21svxM8BFbpc-qMz6MKo32wNQK2HH9u3YJaHNSr_8JC3fyHyIZX4ZgVG6D4tRMjs2EXkuEUw2gzc6PL14_lS7cevsQquhROF0PY=052268EA"
+                url = 'https://wallah.atlassian.net/'
+                user = 'forme4005@gmail.com'
+                jira_connection = JIRA(url, basic_auth=(user, api_token))
+                jira_issue = jira_connection.issue(project_number)
+                comm = jira_issue.fields.comment.comments
+                issue_comments = jira_issue.fields.comment.comments
+                list_for = []
+                for comment in comm:
+                    auther_name = comment.author.displayName
+                    comment_body = comment.body
+                    created = comment.created
+                    date_obj = datetime.strptime(created, "%Y-%m-%dT%H:%M:%S.%f%z")
+                    custom_date_format = "%d-%B-%Y"
+                    formatted_date = date_obj.strftime(custom_date_format)
+                    print(auther_name)
+                    print(comment_body)
+                    transferred_data = (auther_name, comment_body, formatted_date)
+                    print(transferred_data)
+                    list_for.append(transferred_data)
+                if request.method == "POST":
+                    ticket_number = request.form['comment_add']
+                    issue = jira_connection.issue(project_number)
+                    new_comment= jira_connection.add_comment(issue, ticket_number)
         except JIRAError as e:
             # Handle the JIRAError exception
             error_message = e.text
@@ -575,6 +577,36 @@ def comments_1():
             list_for.append(error_message)
         return render_template('comments_1.html',output_data=list_for ,username=session['username'])
     return redirect(url_for('login_form'))
+
+
+@app.route("/subtask",methods=['POST','GET'])		#http://127.0.0.1:5000/contact
+def subtask():
+    if 'loggedin' in session:
+        api_token = "ATATT3xFfGF0vWkYYG1J0jnHxFIYoNHX-S1Jv61Aw9oxaDxzYuHuYpwlvtLMS-AO-2MoDICH8Uyn4aFXY0l1DfRQQMHcyLbvGIEEzIw323hQxgws56xU6p6Nx9rnCxlcHVzv_2vO_QW4gGbT8pDcgz5c1z7G2q5Dv29boOfnAuwIWS9sxEZitFo=0828148D"
+        url = 'https://note.atlassian.net/'
+        user = 'forme4005@gmail.com'
+        if request.method == "POST":
+            jira_connection = JIRA(url, basic_auth=(user, api_token))
+            ticket_data = request.form['ticket']
+            desc_data = request.form['desc']
+            summary_data = request.form['summary']
+            assignee_id = request.form['assignee']
+            priority_data = request.form['priority']
+            parent_issue = jira_connection.issue(ticket_data)
+            project_key = parent_issue.fields.project.key
+            parent_issue_key = parent_issue.key
+            # create the subtask
+            subtask = jira_connection.create_issue(
+                project=project_key,
+                summary=summary_data,
+                description=desc_data,
+                issuetype={'name': 'Sub-task'},
+                parent={'key': parent_issue_key}, priority={'name': priority_data}, assignee={'id': assignee_id}
+            )
+
+        return render_template('subtask.html',  username=session['username'])
+    return redirect(url_for('login_form'))
+
 '''
 
 @app.route("/comments_1",methods=['POST','GET'])		#http://127.0.0.1:5000/contact
@@ -702,8 +734,7 @@ def logout():
     session.pop('username',None)
     return redirect(url_for('login_form'))
 if __name__ == "__main__":
-    app.run(debug=True,host="0.0.0.0",port="1111")
-
+    app.run(debug=True,host="0.0.0.0",port="1113")
 
 #(%s,%s,%s,%s,%s)
 #{{ url_for('login_create')}}
