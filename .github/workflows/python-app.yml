@@ -25,9 +25,11 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
+        sudo bash file.sh
         python -m pip install --upgrade pip
         #pip3 install flask jira mysql-connector-python time datetime
         if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
           nohup python3 uat_app.py
+          
