@@ -23,24 +23,24 @@ jobs:
         python-version: '3.10'  # Replace 'x' with the desired Python version (e.g., 3.7, 3.8, 3.9)
 
     - name: Install MySQL server
-      run: sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
-      continue-on-error: true
-
-    - name: Start MySQL service
-      run: sudo service mysql start
-      continue-on-error: true
-
-    - name: Configure MySQL root password
       run: |
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'passwordis@2018';"
-        sudo mysql -e "FLUSH PRIVILEGES;"
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
+        echo "[mysqld]" | sudo tee -a /etc/mysql/mysql.conf.d/mysqld.cnf
+        echo "skip-grant-tables" | sudo tee -a /etc/mysql/mysql.conf.d/mysqld.cnf
+        sudo service mysql restart
+        sleep 5
+        echo "UPDATE mysql.user SET authentication_string=PASSWORD('passwordis@2018') WHERE User='root';" | sudo mysql
+        echo "FLUSH PRIVILEGES;" | sudo mysql
+        sudo sed -i '/skip-grant-tables/d' /etc/mysql/mysql.conf.d/mysqld.cnf
+        sudo service mysql restart
+      continue-on-error: true
 
     - name: Install MySQL client for Python
       run: sudo apt-get install -y python3-dev libmysqlclient-dev
 
     - name: Install Python dependencies
-      run: pip3 install -r requirements.txt
+      run: pip3 install -r app/requirements.txt
 
     - name: Run Flask application
       run: |
-        python uat_app.py
+        python3 uat_app.py
